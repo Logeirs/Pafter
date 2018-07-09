@@ -43,7 +43,8 @@ optional arguments:
 - Minimum length: 8
 - Lowercase only
 
-```pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
+```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
+
 
 - Minimum length: 6
 - Maximum length 10
@@ -51,12 +52,13 @@ optional arguments:
 - Uppercase included
 - Numbers included
 
-```pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
+```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
+
 
 - Fixed length: 8
 - Everything included: lowercase, uppecase, numbers, special characters
 
-```pafter.py rockyou.txt new_dictionary.txt -minl 8 -maxl 8 -low -up -num -spec```
+```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -maxl 8 -low -up -num -spec```
 
 
 ## Performance tests
