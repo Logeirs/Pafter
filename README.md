@@ -17,7 +17,7 @@ Run this command to clone from Git:
 ## Usage
 To get a list of options:
 ```
-pafter.py -h
+$ ./pafter.py -h
 
 usage: pafter.py [-h] [-minl MINL] [-maxl MAXL] [-low] [-up] [-num] [-spec]
                  file_input file_output
@@ -42,6 +42,7 @@ optional arguments:
 ## Examples
 - Minimum length: 8
 - Lowercase only
+
 ```pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
 
 - Minimum length: 6
@@ -49,10 +50,12 @@ optional arguments:
 - Lowercase included
 - Uppercase included
 - Numbers included
+
 ```pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
 
 - Fixed length: 8
 - Everything included: lowercase, uppecase, numbers, special characters
+
 ```pafter.py rockyou.txt new_dictionary.txt -minl 8 -maxl 8 -low -up -num -spec```
 
 
@@ -62,21 +65,21 @@ A chunk size of 16Mb or 32Mb gives the fastest results but is quite CPU intensiv
 
 * SIZE_16_MBYTES
 ```
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
 [+] Filtering...
 [+] Done! Writing results (309112), please be patient...
 
 Executed in 321s
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
+$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
 [+] Filtering...
 [+] Done! Writing results (52360), please be patient...
 
 Executed in 277s
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
 [+] Filtering...
 [+] Done! Writing results (1885369), please be patient...
 
@@ -86,14 +89,14 @@ Executed in 533s
 
 * SIZE_32_MBYTES
 ```
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
 [+] Filtering...
 [+] Done! Writing results (309112), please be patient...
 
 Executed in 323s
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
+$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
 [+] Filtering...
 [+] Done! Writing results (52360), please be patient...
 
@@ -101,7 +104,7 @@ Executed in 276s
 
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
 [+] Filtering...
 [+] Done! Writing results (1885369), please be patient...
 
@@ -111,21 +114,21 @@ Executed in 532s
 
 * SIZE_64_MBYTES
 ```
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
 [+] Filtering...
 [+] Done! Writing results (309112), please be patient...
 
 Executed in 499s
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
+$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
 [+] Filtering...
 [+] Done! Writing results (52360), please be patient...
 
 Executed in 425s
 
 
-./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
+$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
 [+] Filtering...
 [+] Done! Writing results (1885369), please be patient...
 
