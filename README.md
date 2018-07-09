@@ -137,5 +137,5 @@ $ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
 Executed in 747s
 ```
 
-## Contribution
+## Contributions
 Thanks to Matt for helping me with the tool name :)
