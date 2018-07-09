@@ -1,7 +1,7 @@
 # Pafter - Password Filterer
 
 Pafter is a python script that filters a password dictionary using a custom password policy.
-This idea came from the question of using a dictionary (i.e. rockyou) when you know that half of the passwords aren't matching the policy.
+This idea came from the question of using a dictionary (i.e. rockyou) when you know that half of the passwords isn't matching the policy.
 
 
 ## Details
