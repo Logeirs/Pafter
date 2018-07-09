@@ -43,9 +43,9 @@ optional arguments:
 1. Example 1
    - Minimum length: 8
    - [x] Lowercase
-   - [] Uppercase
-   - [] Numbers
-   - [] Special characters
+   - [ ] Uppercase
+   - [ ] Numbers
+   - [ ] Special characters
 
 ```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
 
@@ -55,7 +55,7 @@ optional arguments:
    - [x] Lowercase
    - [x] Uppercase
    - [x] Numbers
-   - [] Special characters
+   - [ ] Special characters
 
 ```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
 
