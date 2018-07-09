@@ -34,7 +34,7 @@ def main(argc, argv):
 
             with open(file_input, 'rU') as f_input, open(file_output, 'wb') as f_output:
                 print "[+] Filtering..."
-                f_read = partial(f_input.read, SIZE_32_MBYTES)
+                f_read = partial(f_input.read, SIZE_128_MBYTES)
 
                 for chunk in iter(f_read, ''):
                     chunk += f_input.readline()
