@@ -40,12 +40,13 @@ optional arguments:
 
 
 ## Examples
+1.
 - Minimum length: 8
 - Lowercase only
 
 ```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
 
-
+2. 
 - Minimum length: 6
 - Maximum length 10
 - Lowercase included
@@ -54,7 +55,7 @@ optional arguments:
 
 ```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
 
-
+3.
 - Fixed length: 8
 - Everything included: lowercase, uppecase, numbers, special characters
 
