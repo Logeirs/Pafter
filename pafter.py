@@ -35,10 +35,7 @@ def main(argc, argv):
 
             with open(file_input, 'rU') as f_input, open(file_output, 'wb') as f_output:
                 print "[+] Filtering..."
-<<<<<<< HEAD
 
-=======
->>>>>>> f9547790db7e9396c7a6592482133ed76ecff59e
                 f_read = partial(f_input.read, SIZE_32_MBYTES)
 
                 for chunk in iter(f_read, ''):
@@ -93,13 +90,6 @@ def create_policy(args):
 
     if not [ key for key, value in args_list.iteritems() if key not in ('minl','maxl') and value ]:
         print "[+] WARNING: You may want to include lowercase [-low], uppercase [-up] or numbers [-num]."
-        # choice=raw_input("Continue? [y/n] ")
-        # while choice != "y" or "Y" or "n" or "N":
-        #     if choice == "y" or "Y": continue
-        #     elif choice == "n" or "N": 
-        #         print "Aborting!"
-        #         sys.exit(1)
-        #     else: choice=raw_input("Continue? [y/n] ")
     
     return args_list
 
