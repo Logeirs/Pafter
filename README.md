@@ -10,11 +10,11 @@ The chunk size is what you may want to change according to your needs (size of t
 
 
 #### Update
-Pafter has been updated! The main change is about how the filter was performed.
+Pafter has been updated! The main change is about how the filter is being performed.
 
-The initial version allowed you to filter what you wanted and what you did not. As an example, `-low -num` would match **only** passwords with lowercase and numbers, but not those with uppercase or special characters (i.e. "Password1" would not match). This is precise but not practical, because in the real life web applications are unlikely to prevent you from using a range of characters (and if they do, you should run away).
+The initial version allowed you to filter what you wanted and what you did not. As an example, `-low -num` would match **only** passwords with lowercase characters and numbers, but not those with uppercase or special characters (i.e. "Password1" would not match). This is precise but not practical, because in the real life web applications are unlikely to prevent you from using a range of characters (and if they do, you should run away).
 
-Pafter v2.0 will now consider valid any password matching the password policy, even if they contain characters not explicitly specified. For instance, "password1", "Password1" or "Password1!" would be valid with `-low -num`.
+Pafter v2.0 will now consider valid any password matching the password policy, even if they contain characters not explicitly specified. For instance, "password1", "Password1" or "Password1!" would be valid with `-low -num` as it contains at least a lowercase character and number.
 
 
 ## Download via Git
