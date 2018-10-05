@@ -1,5 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # -*- coding: UTF-8 -*-
+
 
 import argparse
 import os, sys
@@ -28,17 +29,18 @@ def main(argc, argv):
 
     pool = mp.Pool(mp.cpu_count())
 
-    if os.path.isfile(file_input) == True:
-        if os.stat(file_input).st_size > 0:
+    if os.path.isfile(file_input):
+        if os.stat(file_input).st_size:
             policy=create_policy(args)
 
             with open(file_input, 'rU') as f_input, open(file_output, 'wb') as f_output:
                 print "[+] Filtering..."
-                f_read = partial(f_input.read, SIZE_128_MBYTES)
+
+                f_read = partial(f_input.read, SIZE_32_MBYTES)
 
                 for chunk in iter(f_read, ''):
                     chunk += f_input.readline()
-                    proc = mp.Process(target=process_chunk, args=(chunk, args_list, policy, pwds_output))
+                    proc = mp.Process(target=process_chunk, args=(chunk, policy, pwds_output))
                     procs.append(proc)
                     proc.start()
 
@@ -58,33 +60,45 @@ def main(argc, argv):
     print "\nExecuted in %is" %(end - start)
 
 
-def process_chunk(chunk, args_list, policy, pwds_output):
-    global COMPARISON_TABLE
 
+
+def is_valid(policy, password):
+    valid = True
+
+    if policy["minl"] and len(password) < policy['minl']: valid = False
+    if policy["maxl"] and len(password) > policy['maxl']: valid = False
+    if policy["low"] and not any([c.islower() for c in password]): valid = False
+    elif policy["up"] and not any([c.isupper() for c in password]): valid = False
+    elif policy["num"] and not any([c.isdigit() for c in password]): valid = False
+    elif policy["spec"] and not any([c for c in password if c in SPECIAL_CHARS]): valid = False
+
+    return valid
+
+
+def process_chunk(chunk, policy, pwds_output):
     passwords = chunk.splitlines()
-    pwds_output += [ p for p in passwords if eval(policy) ]
+    pwds_output += [ p for p in passwords if is_valid(policy, p) ]
 
 
 def create_policy(args):
     global args_list
-    global COMPARISON_TABLE
     policy = []
 
     args_list = vars(args)
     del args_list['file_input']
     del args_list['file_output']
-    args_list = {key: value for key, value in args_list.iteritems() if value is not None}
 
-    if not [ key for key, value in args_list.iteritems() if not key in ('minl','maxl') and value is not False ]: print "[+] WARNING: You may want to include a specific case such as lowercase [-low], uppercase [-up] or numbers [-num]"
-
-    for arg in args_list:
-        if arg == 'minl' or arg == 'maxl': policy.append(eval(COMPARISON_TABLE.get(arg)))
-        elif args_list.get(arg): policy.append(COMPARISON_TABLE.get(arg))
-        else: policy.append("not " + (COMPARISON_TABLE.get(arg)))
-
-    policy=" and ".join(policy)
+    if not [ key for key, value in args_list.iteritems() if key not in ('minl','maxl') and value ]:
+        print "[+] WARNING: You may want to include lowercase [-low], uppercase [-up] or numbers [-num]."
+        # choice=raw_input("Continue? [y/n] ")
+        # while choice != "y" or "Y" or "n" or "N":
+        #     if choice == "y" or "Y": continue
+        #     elif choice == "n" or "N": 
+        #         print "Aborting!"
+        #         sys.exit(1)
+        #     else: choice=raw_input("Continue? [y/n] ")
     
-    return policy
+    return args_list
 
 
 def parse_my_args():
@@ -122,13 +136,6 @@ SIZE_16_MBYTES = 16777216
 SIZE_32_MBYTES = 33554432
 SIZE_64_MBYTES = 67108864
 SIZE_128_MBYTES = 134217728
-COMPARISON_TABLE = {'minl':'"len(p) >= %s " %(str(args_list["minl"]))',
-                    'maxl':'"len(p) <= %s " %(str(args_list["maxl"]))',
-                    'low':'any([c.islower() for c in p])',
-                    'up':'any([c.isupper() for c in p])',
-                    'num':'any([c.isdigit() for c in p])',
-                    'spec':'any([c for c in p if c in SPECIAL_CHARS])'
-                   }
 SPECIAL_CHARS = set(punctuation)
 args_list = {}
 
