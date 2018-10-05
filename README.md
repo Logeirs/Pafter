@@ -10,7 +10,7 @@ The chunk size is what you may want to change according to your needs (size of t
 
 
 #### Update
-Pafter has been updated! The main change is about how the filter is being performed.
+Pafter has been updated! The main change is about how the filter is being performed. It does not use `eval()` anymore (which is something I wanted to get rid off) and is consequently much faster than before.
 
 The initial version allowed you to filter what you wanted and what you did not. As an example, `-low -num` would match **only** passwords with lowercase characters and numbers, but not those with uppercase or special characters (i.e. "Password1" would not match). This is precise but not practical, because in the real life web applications are unlikely to prevent you from using a range of characters (and if they do, you should run away).
 
