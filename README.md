@@ -47,110 +47,31 @@ optional arguments:
 ```
 
 
-## Examples
-1. Example 1
-   - Minimum length: 8
-   - [x] Lowercase
-   - [ ] Uppercase
-   - [ ] Numbers
-   - [ ] Special characters
-
-```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -low```
-
-2. Example 2
-   - Minimum length: 6
-   - Maximum length: 10
-   - [x] Lowercase
-   - [x] Uppercase
-   - [x] Numbers
-   - [ ] Special characters
-
-```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 6 -maxl 10 -low -up -num```
-
-3. Example 3
-   - Fixed length: 8
-   - [x] Lowercase
-   - [x] Uppercase
-   - [x] Numbers
-   - [x] Special characters
-
-```$ ./pafter.py rockyou.txt new_dictionary.txt -minl 8 -maxl 8 -low -up -num -spec```
-
-
 ## Performance tests
 The performance tests below were run using rockyou.txt (136Mb) on a Windows 7 VM with 4 CPU cores and 8Go of RAM.
-A chunk size of 16Mb or 32Mb gives the fastest results but is quite CPU intensive, compared to 64Mb where it's less intensive but takes nearly twice as much time.
 
-* SIZE_16_MBYTES
 ```
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
+./pafter.py rockyou.txt output.txt -minl 6 -maxl 10 -low -up -num
 [+] Filtering...
-[+] Done! Writing results (309112), please be patient...
+[+] Done! Writing results (345466), please be patient...
 
-Executed in 321s
+Executed in 66s
 
 
-$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
+./pafter.py rockyou.txt output.txt -minl 6 -low -up -num -spec
 [+] Filtering...
 [+] Done! Writing results (52360), please be patient...
 
-Executed in 277s
+Executed in 25s
 
 
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
+./pafter.py rockyou.txt output.txt -minl 6 -maxl 8 -low
 [+] Filtering...
-[+] Done! Writing results (1885369), please be patient...
+[+] Done! Writing results (5685734), please be patient...
 
-Executed in 533s
+Executed in 757s
 ```
 
-
-* SIZE_32_MBYTES
-```
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
-[+] Filtering...
-[+] Done! Writing results (309112), please be patient...
-
-Executed in 323s
-
-
-$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
-[+] Filtering...
-[+] Done! Writing results (52360), please be patient...
-
-Executed in 276s
-
-
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
-[+] Filtering...
-[+] Done! Writing results (1885369), please be patient...
-
-Executed in 532s
-```
-
-
-* SIZE_64_MBYTES
-```
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 10 -low -up -num
-[+] Filtering...
-[+] Done! Writing results (309112), please be patient...
-
-Executed in 499s
-
-
-$ ./pafter.py rockyou.txt new.txt -minl 6 -low -up -num -spec
-[+] Filtering...
-[+] Done! Writing results (52360), please be patient...
-
-Executed in 425s
-
-
-$ ./pafter.py rockyou.txt new.txt -minl 6 -maxl 8 -low
-[+] Filtering...
-[+] Done! Writing results (1885369), please be patient...
-
-Executed in 747s
-```
 
 ## Contributions
 Thanks to Matt for helping me with the tool name :)
